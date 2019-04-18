@@ -14,6 +14,13 @@ print("Encoding FOO")
 foo_image = face_recognition.load_image_file("foo.jpg")
 foo_face_encoding = face_recognition.face_encodings(foo_image)[0]
 
+
+print("Encoding ARYAN")
+
+# Load a sample picture of yourself and learn how to recognize it.
+aryan_image = face_recognition.load_image_file("aryan.jpeg")
+aryan_face_encoding = face_recognition.face_encodings(aryan_image)[0]
+
 print("Encoding BAR")
 
 # Load a second sample picture and learn how to recognize it.
@@ -29,11 +36,13 @@ ganesh_face_encoding = face_recognition.face_encodings(ganesh_image)[0]
 # Create arrays of known face encodings and their names
 known_face_encodings = [
     foo_face_encoding,
+    aryan_face_encoding,
     bar_face_encoding,
     ganesh_face_encoding
 ]
 known_face_names = [
     "Bill Gates",
+    "Aryan",
     "Elon Musk",
     "Ganesh"
 ]

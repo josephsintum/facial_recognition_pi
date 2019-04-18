@@ -2,18 +2,18 @@ import face_recognition
 import cv2
 
 # Get a reference to your webcam 
-video_capture = cv2.VideoCapture(0)
+video_capture = cv2.VideoCapture(2)
 
 # Load a sample picture of yourself and learn how to recognize it.
-foo_image = face_recognition.load_image_file("/home/jay/Documents/code/tuts/facial_recognition_pi/real_time_cv2/foo.jpg")
+foo_image = face_recognition.load_image_file("foo.jpg")
 foo_face_encoding = face_recognition.face_encodings(foo_image)[0]
 
 # Load a second sample picture and learn how to recognize it.
-bar_image = face_recognition.load_image_file("/home/jay/Documents/code/tuts/facial_recognition_pi/real_time_cv2/bar.jpg")
+bar_image = face_recognition.load_image_file("bar.jpg")
 bar_face_encoding = face_recognition.face_encodings(bar_image)[0]
 
 # Load a second sample picture and learn how to recognize it.
-ganesh_image = face_recognition.load_image_file("/home/jay/Documents/code/tuts/facial_recognition_pi/real_time_cv2/ganesh.jpeg")
+ganesh_image = face_recognition.load_image_file("ganesh.jpeg")
 ganesh_face_encoding = face_recognition.face_encodings(ganesh_image)[0]
 
 # Create arrays of known face encodings and their names

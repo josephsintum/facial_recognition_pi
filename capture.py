@@ -1,22 +1,41 @@
-from io import BytesIO
+import cv2
 from time import sleep
-from picamera import PiCamera
 
-# Create the in-memory stream
-stream = BytesIO()
-camera = PiCamera()
-# camera.start_preview()
-sleep(2)
+while True:
 
-with PiCamera() as camera:
-    # camera.start_preview()
-    try:
-        for i, filename in enumerate(
-                camera.capture_continuous('image{counter:02d}.jpg')):
-            print(filename)
-            time.sleep(0.5)
-            if i == 32:
-                break
+    student_name = input("Enter student's name: ")
 
-    # finally:
-    #     camera.stop_preview()
+    if student_name == 'exit':
+        break
+
+    std_name = student_name.strip()
+    std_name = student_name.replace(" ", "_")
+    std_name_img = std_name + ".jpg"
+
+    cam = cv2.VideoCapture(0)
+
+    cv2.namedWindow("Capture " + student_name)
+
+    img_counter = 0
+
+    while True:
+        ret, frame = cam.read()
+        cv2.imshow("Capture " + student_name, frame)
+        if not ret:
+            break
+        k = cv2.waitKey(1)
+
+        if k%256 == 27:
+            # ESC pressed
+            print("Escape hit, closing...")
+            break
+        elif k%256 == 32:
+            # SPACE pressed
+            img_name = std_name_img.format(img_counter)
+            cv2.imwrite(img_name, frame)
+            print("{} saved!".format(img_name))
+            img_counter += 1
+
+    cam.release()
+
+    cv2.destroyAllWindows()

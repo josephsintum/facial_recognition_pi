@@ -19,7 +19,7 @@ def training_mode():
     std_name_img.replace(" ", "_")
     std_name_img = std_name_img + ".jpg"
 
-    cam = cv2.VideoCapture(2)
+    cam = cv2.VideoCapture(0)
 
     cv2.namedWindow("Capture " + student_name)
 
